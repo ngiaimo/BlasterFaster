@@ -26,7 +26,36 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialize the enemy spawner
-alarm[0] = room_speed*3;
+alarm[ENEMY_SPAWNER] = room_speed*3;
+alarm[POWERUP_SPAWNER] = room_speed*5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Create the powerup
+var powerup = choose(o_armor_powerup, o_laser_powerup);
+
+instance_create(random_range(16, room_width-16), -16, powerup);
+
+alarm[POWERUP_SPAWNER] = random_range(room_speed*10, room_speed*15);
 </string>
           </argument>
         </arguments>
@@ -50,9 +79,24 @@ alarm[0] = room_speed*3;
           <argument>
             <kind>1</kind>
             <string>/// Spawn the enemies
-instance_create(random_range(16, room_width-16), -16, o_enemy_one);
+var enemy = o_enemy_one;
+var alarm_time = random_range(room_speed*.5, room_speed*2);
 
-alarm[ENEMY_SPAWNER] = random_range(room_speed*.5, room_speed*2);
+// Incrase the difficulty
+if(score &gt;= 100) {
+    enemy = choose(o_enemy_one, o_enemy_one, o_enemy_two);
+    alarm_time = random_range(room_speed*.25, room_speed*1.5);    
+}
+
+// Increase the difficulty
+if(score &gt;= 200) {
+    enemy = choose(o_enemy_one, o_enemy_two);
+    alarm_time = random_range(room_speed*.25, room_speed);
+}
+
+// Create the enemy
+instance_create(random_range(16, room_width-16), -16, enemy);
+alarm[ENEMY_SPAWNER] = alarm_time;
 </string>
           </argument>
         </arguments>

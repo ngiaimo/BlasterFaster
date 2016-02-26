@@ -4,24 +4,78 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\a_laser</sound>
+    <sound>sound\a_powerup</sound>
+    <sound>sound\a_ship_hit</sound>
+    <sound>sound\a_enemy_laser</sound>
+    <sound>sound\a_explode</sound>
+    <sound>sound\a_hit</sound>
+    <sound>sound\a_space_music</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\s_ship</sprite>
     <sprite>sprites\s_laser</sprite>
     <sprite>sprites\s_enemy_one</sprite>
+    <sprite>sprites\s_explosion_center</sprite>
+    <sprite>sprites\s_enemy_two</sprite>
+    <sprite>sprites\s_enemy_laser</sprite>
+    <sprite>sprites\s_score</sprite>
+    <sprite>sprites\s_armor</sprite>
+    <sprite>sprites\s_armor_powerup</sprite>
+    <sprite>sprites\s_laser_powerup</sprite>
+    <sprite>sprites\s_button</sprite>
+    <sprite>sprites\s_flare</sprite>
+    <sprite>sprites\s_smoke</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\b_stars_far</background>
     <background>background\b_stars_close</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\add_screenshake.gml</script>
+    <script>scripts\create_part_type_sprite.gml</script>
+    <script>scripts\create_explosion.gml</script>
+  </scripts>
+  <fonts name="fonts">
+    <font>fonts\f_score</font>
+  </fonts>
   <objects name="objects">
-    <object>objects\o_ship</object>
-    <object>objects\o_laser</object>
-    <object>objects\o_enemy_one</object>
-    <object>objects\o_enemy_spawner</object>
+    <objects name="Game">
+      <object>objects\o_game</object>
+      <object>objects\o_armor_powerup</object>
+      <object>objects\o_laser_powerup</object>
+      <object>objects\o_explosion_center</object>
+      <object>objects\o_powerup_parent</object>
+      <object>objects\o_screen_flash</object>
+      <object>objects\o_view_controller</object>
+      <object>objects\o_particle_creator</object>
+    </objects>
+    <objects name="Player">
+      <object>objects\o_ship</object>
+      <object>objects\o_laser</object>
+      <object>objects\o_flare</object>
+    </objects>
+    <objects name="Enemy">
+      <object>objects\o_enemy_parent</object>
+      <object>objects\o_enemy_spawner</object>
+      <object>objects\o_enemy_one</object>
+      <object>objects\o_enemy_two</object>
+      <object>objects\o_enemy_laser</object>
+    </objects>
+    <objects name="UI">
+      <object>objects\o_armor</object>
+      <object>objects\o_score</object>
+      <object>objects\o_highscore</object>
+      <object>objects\o_start_button</object>
+      <object>objects\o_menu_button</object>
+      <object>objects\o_quit_button</object>
+      <object>objects\o_button_parent</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\r_menu</room>
     <room>rooms\r_space</room>
   </rooms>
   <help>
